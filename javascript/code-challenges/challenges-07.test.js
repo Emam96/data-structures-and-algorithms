@@ -8,34 +8,41 @@ Write a function called sortStarWarsCharacters that sorts the characters in the 
 
 let starWarsPeople = [
   {
-    "name": "C-3PO",
-    "height": "167",
-    "eye_color": "yellow"
+    'name': 'C-3PO',
+    'height': '167',
+    'eye_color': 'yellow'
   },
   {
-    "name": "Luke Skywalker",
-    "height": "172",
-    "eye_color": "blue"
+    'name': 'Luke Skywalker',
+    'height': '172',
+    'eye_color': 'blue'
   },
   {
-    "name": "R2-D2",
-    "height": "96",
-    "eye_color": "red"
+    'name': 'R2-D2',
+    'height': '96',
+    'eye_color': 'red'
   }
 ];
 
 const sortStarWarsCharacters = (starWarsArr) => {
-  // Solution code here...
-}
+  return starWarsArr.sort((a, b) => {
+    return b.height - a.height;
+  });
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index. 
+Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index.
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
   // Solution code here...
+
+  let newArr = arr;
+  newArr.splice(idx, 3);
+  return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +53,8 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
+  return arr.join(' ');
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,6 +73,15 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
+
+  let arr2 = str;
+  for (let i = 0; i <= arr2.length; i++) {
+    result.push(str);
+    str = str.slice(1);
+
+  }
+
+
   return result;
 };
 
@@ -77,6 +95,9 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+
+  return arr.split("");
+
 };
 
 
@@ -124,6 +145,54 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+
+  let foods = recipe.ingredients;
+
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    let ing = foods[i];
+
+    
+
+    let noNumIng = ing.replace(/[0-9]/g, "");
+    let noSpaceIng = noNumIng.replace(" ", "");
+////////////////////////////////////
+    if (noSpaceIng.includes("medium-sized")) {
+      let noUnitIng = noSpaceIng.replace("medium-sized", "");
+      let finalIng = noUnitIng.replace(" ", "");
+      result.push(finalIng);
+      continue;
+    }
+//////////////////////////////
+    if (noSpaceIng.includes("pounds")) {
+      let noUnitIng = noSpaceIng.replace("pounds", "");
+      let finalIng = noUnitIng.replace(" ", "");
+      result.push(finalIng);
+      continue;
+    }
+////////////////////////////////
+    if (noSpaceIng.includes("pound")) {
+      let noUnitIng = noSpaceIng.replace("pound", "");
+      let finalIng = noUnitIng.replace(" ", "");
+      result.push(finalIng);
+      continue;
+    }
+//////////////////////////////////////
+    if (noSpaceIng.includes("gallons")) {
+      let noUnitIng = noSpaceIng.replace("gallons", "");
+      let finalIng = noUnitIng.replace(" ", "");
+      result.push(finalIng);
+      continue;
+    }
+
+    /////////////////////////////
+    if (noSpaceIng.includes("cups")) {
+      let noUnitIng = noSpaceIng.replace("cups", "");
+      let finalIng = noUnitIng.replace(" ", "");
+      result.push(finalIng);
+      continue;
+    }
+  }
+
   return result;
 };
 
@@ -248,7 +317,7 @@ describe('Testing challenge 1', () => {
   test('It should sort the star wars characters by height from tallest to shortest', () => {
     expect(sortStarWarsCharacters(starWarsPeople)[0]['name']).toStrictEqual('Luke Skywalker');
     expect(sortStarWarsCharacters(starWarsPeople)[2]['height']).toStrictEqual('96');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
